@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2020-01-12" view-index="0" gantt-divider-location="422" resource-divider-location="223" version="2.8.10" locale="it_IT">
+    <description/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="182" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="90" order="1"/>
+        <field id="tpd5" name="Data di fine" width="88" order="2"/>
+        <field id="tpd6" name="Durata" width="58" order="3"/>
+        <option id="color.recent"><![CDATA[#0000cc #ff0099 #ccff99 #ffffcc #ffccff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="154" order="0"/>
+        <field id="1" name="Ruolo predefinito" width="65" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="2" name="0 Start" color="#8cb6ce" meeting="true" start="2020-01-15" duration="0" complete="0" thirdDate="2016-09-27" thirdDate-constraint="0" expand="true">
+            <depend id="0" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="0" name="1 Collect requirements" color="#8cb6ce" meeting="false" start="2020-01-15" duration="3" complete="0" thirdDate="2018-10-01" thirdDate-constraint="0" expand="true" cost-manual-value="0.02" cost-calculated="true">
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="10" name="2 Analyze processes" color="#ffccff" meeting="false" start="2020-01-18" duration="2" complete="0" thirdDate="2018-10-04" thirdDate-constraint="0" expand="true" cost-manual-value="0.0" cost-calculated="false">
+            <depend id="13" type="2" difference="0" hardness="Strong"/>
+            <depend id="15" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="13" name="3 Analyze data" color="#ffccff" meeting="false" start="2020-01-20" duration="2" complete="0" thirdDate="2018-10-06" thirdDate-constraint="0" expand="true">
+            <depend id="16" type="2" difference="0" hardness="Strong"/>
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="15" name="4 Design processes" color="#8cb6ce" meeting="false" start="2020-01-20" duration="6" complete="0" thirdDate="2018-10-06" thirdDate-constraint="0" expand="true">
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="16" name="5 Design data" color="#8cb6ce" meeting="false" start="2020-01-22" duration="3" complete="0" thirdDate="2018-10-08" thirdDate-constraint="0" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="17" name="6 Design screens" color="#8cb6ce" meeting="false" start="2020-01-26" duration="2" complete="0" thirdDate="2018-10-12" thirdDate-constraint="0" expand="true">
+            <depend id="19" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="18" name="7 Design reports" color="#8cb6ce" meeting="false" start="2020-01-26" duration="4" complete="0" thirdDate="2018-10-12" thirdDate-constraint="0" expand="true">
+            <depend id="19" type="2" difference="0" hardness="Strong"/>
+            <depend id="20" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="19" name="8 Program" color="#ccff99" meeting="false" start="2020-01-30" duration="5" complete="0" thirdDate="2018-10-16" thirdDate-constraint="0" expand="true">
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="20" name="9 Test and document" color="#ff0099" meeting="false" start="2020-01-30" duration="7" complete="0" thirdDate="2018-10-16" thirdDate-constraint="0" expand="true">
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="21" name="10 Install" color="#0000cc" meeting="false" start="2020-02-06" duration="2" complete="0" thirdDate="2018-10-23" thirdDate-constraint="0" expand="true">
+            <depend id="22" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="22" name="11 Finish" color="#8cb6ce" meeting="true" start="2020-02-08" duration="0" complete="0" thirdDate="2018-10-25" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="1" name="Generico" function="Default:0" contacts="" phone="">
+            <rate name="standard" value="250"/>
+        </resource>
+    </resources>
+    <allocations>
+        <allocation task-id="0" resource-id="1" function="Default:0" responsible="false" load="200.0"/>
+        <allocation task-id="10" resource-id="1" function="Default:0" responsible="false" load="200.0"/>
+        <allocation task-id="15" resource-id="1" function="Default:0" responsible="false" load="400.0"/>
+        <allocation task-id="16" resource-id="1" function="Default:0" responsible="false" load="300.0"/>
+        <allocation task-id="17" resource-id="1" function="Default:0" responsible="false" load="200.0"/>
+        <allocation task-id="18" resource-id="1" function="Default:0" responsible="false" load="400.0"/>
+        <allocation task-id="19" resource-id="1" function="Default:0" responsible="false" load="500.0"/>
+        <allocation task-id="20" resource-id="1" function="Default:0" responsible="false" load="400.0"/>
+        <allocation task-id="21" resource-id="1" function="Default:0" responsible="false" load="500.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>

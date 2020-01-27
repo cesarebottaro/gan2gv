@@ -1,0 +1,14 @@
+
+- visit all "task" nodes
+
+for each task ("forwards"):
+	- create a structure by id, as in .gan file
+	- containing ES, duration, EF, start, end
+	- containing a list of all successors (correcting ES dates?)
+	- trying to find end node (and its EF)
+
+- for each task ("backwards") starting from end node:
+	- find all predecessors, creating or correcting LS, LF, slack
+	- label as critical the nodes whose slack is 0
+
+
