@@ -5,7 +5,7 @@ import datetime # to manage calendar dates
 import sys # to read command line parameters
 
 if len(sys.argv) < 2:
-    print("Name of file .gan is needed!")
+    print("Name of file .gan is needed!")   
     print("Exiting...")
     sys.exit()
 	
