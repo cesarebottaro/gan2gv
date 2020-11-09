@@ -3,28 +3,30 @@ digraph prova {
   graph [nodesep=.7, rankdir=LR, splines=ortho];
   node [shape=record, width=1.5, height=.1];
   legenda [label = "{ES|D|EF} | {Task} | {LF|S|LF}"]
-  node_2 [label = "{15/01/20}|{0 Start}"]
+
+  node_2 [label = "{03/02/2020}|{0 Start}"]
   node_2 -> { node_0 }
-  node_0 [label = "{15/01/20|3|17/01/20}|{1 Collect requirements}|{LS|S|LF}"]
+  node_0 [label = "{03/02/2020|3|05/02/2020}|{1 Collect requirements}|{LS|S|LF}"]
   node_0 -> { node_10 }
-  node_10 [label = "{18/01/20|2|19/01/20}|{2 Analyze processes}|{LS|S|LF}"]
+  node_10 [label = "{06/02/2020|2|07/02/2020}|{2 Analyze processes}|{LS|S|LF}"]
   node_10 -> { node_13 node_15 }
-  node_13 [label = "{20/01/20|2|21/01/20}|{3 Analyze data}|{LS|S|LF}"]
+  node_13 [label = "{08/02/2020|2|09/02/2020}|{3 Analyze data}|{LS|S|LF}"]
   node_13 -> { node_16 node_17 }
-  node_15 [label = "{20/01/20|6|25/01/20}|{4 Design processes}|{LS|S|LF}"]
+  node_15 [label = "{08/02/2020|6|13/02/2020}|{4 Design processes}|{LS|S|LF}"]
   node_15 -> { node_17 node_18 }
-  node_16 [label = "{22/01/20|3|24/01/20}|{5 Design data}|{LS|S|LF}"]
+  node_16 [label = "{10/02/2020|3|12/02/2020}|{5 Design data}|{LS|S|LF}"]
   node_16 -> { node_18 }
-  node_17 [label = "{26/01/20|2|27/01/20}|{6 Design screens}|{LS|S|LF}"]
+  node_17 [label = "{14/02/2020|2|15/02/2020}|{6 Design screens}|{LS|S|LF}"]
   node_17 -> { node_19 }
-  node_18 [label = "{26/01/20|4|29/01/20}|{7 Design reports}|{LS|S|LF}"]
+  node_18 [label = "{14/02/2020|4|17/02/2020}|{7 Design reports}|{LS|S|LF}"]
   node_18 -> { node_19 node_20 }
-  node_19 [label = "{30/01/20|5|03/02/20}|{8 Program}|{LS|S|LF}"]
+  node_19 [label = "{18/02/2020|5|22/02/2020}|{8 Program}|{LS|S|LF}"]
   node_19 -> { node_21 }
-  node_20 [label = "{30/01/20|7|05/02/20}|{9 Test and document}|{LS|S|LF}"]
+  node_20 [label = "{18/02/2020|7|24/02/2020}|{9 Test and document}|{LS|S|LF}"]
   node_20 -> { node_21 }
-  node_21 [label = "{06/02/20|2|07/02/20}|{10 Install}|{LS|S|LF}"]
+  node_21 [label = "{25/02/2020|2|26/02/2020}|{10 Install}|{LS|S|LF}"]
   node_21 -> { node_22 }
-  node_22 [label = "{08/02/20}|{11 Finish}"]
+  node_22 [label = "{27/02/2020}|{11 Finish}"]
   node_22 -> { }
+  legenda2 [label = "{temporary: don't read} | {01/01/2020} | {# comment}"]
 }
