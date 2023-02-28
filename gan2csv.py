@@ -28,6 +28,9 @@ def datetime64_to_datetime(date,string):
     else:
        return new_date
 
+def create_column(tag, data, style):
+    return "<"+tag+" style=\""+style+"\">"+data+"</"+tag+">"
+
 ###### END FUNCTIONS ######
 
 if len(sys.argv) < 2:
@@ -84,43 +87,29 @@ for key in nodes_to_visit:
     find_LS(key,nodes_to_visit[key],1)
 
 # start creating the graph
-print ("digraph "+filename+" {")
-print ("  rankdir=LR;")
-print ("  graph [nodesep=.7, rankdir=LR, splines=ortho];")
-print ("  node [shape=record, width=1.5, height=.1];")
-print ("  legenda [label = \"{ES|D|EF} | {Task} | {LS|S|LF}\"]")
+
+print("Name", "D", "ES", "EF", "LS", "LF", "S", sep="|" , end="\n")
+
 for node in dom.getElementsByTagName('task'):
     if node.getElementsByTagName('task').length==0:
         task_id=int(node.getAttribute('id'))
-        #slack=(datetime64_to_datetime(data[task_id][1],0)-datetime64_to_datetime(node.getAttribute('start'),0)).days
         slack=np.busday_count(np.datetime64(node.getAttribute('start'),'D'),data[task_id][1],weekmask=workdays,holidays=holidays_list)
-
-        print ("  node_", task_id, " [ ",sep="", end="")# starts node description
-        if slack==0 and data[task_id][0]>0:
-            print ("fillcolor=yellow1 style=filled ",sep="",end="")
-        if data[task_id][0]==0:
-            print ("fillcolor=yellowgreen style=filled ",sep="",end="")
-        print ("label = \"{",datetime64_to_datetime(node.getAttribute('start'),1), sep="", end="")
+        
+        print (node.getAttribute('name'), sep="", end="|")
+        print (str(data[task_id][0]), sep="", end="|")
+        print (datetime64_to_datetime(node.getAttribute('start'),1), sep="", end="|") 
       
         if data[task_id][0]>0:
-            print ("|", data[task_id][0], "|", sep="", end="")
-            print (datetime64_to_datetime(np.busday_offset(np.datetime64(node.getAttribute('start'),'D'),data[task_id][0]-1,roll='forward',weekmask=workdays,holidays=holidays_list),1), sep="", end="")
+            print (datetime64_to_datetime(np.busday_offset(np.datetime64(node.getAttribute('start'),'D'),
+            data[task_id][0]-1, roll='forward', weekmask=workdays, holidays=holidays_list), 1), sep="", end="|")
             
-        print ("}|{", sep="", end="")
-        print (node.getAttribute('name'), "}", sep="", end="")
-
-        if data[task_id][0]>0:
-            print ("|{",datetime64_to_datetime(data[task_id][1],1),"|", slack,"|",sep="", end="")
-            print(datetime64_to_datetime(np.busday_offset((data[task_id][1]),data[task_id][0]-1,roll='following',weekmask=workdays,holidays=holidays_list),1), "}", sep="", end="")
-
-        print ("\"]") #  ends node description
-        
-        if node.getElementsByTagName('depend'):
-            print ("  node_", task_id, " -> {", sep="", end=" ")
-            # cycle to draw edges to successors
-            for i in node.getElementsByTagName('depend'):
-                print("node_",i.getAttribute('id'), sep="", end=" ")       
-            print ("}")
-        
-print ("}")
-
+            print (datetime64_to_datetime(data[task_id][1],1), sep="", end="|")
+            print (datetime64_to_datetime(np.busday_offset((data[task_id][1]),data[task_id][0]-1,
+            roll='following', weekmask=workdays, holidays=holidays_list), 1), sep="", end="|")
+            
+            print (str(slack), sep="", end="")
+        else:
+            for x in range(4):
+                  print ("-", sep="", end="|")
+           
+        print ("", sep="", end="\n")

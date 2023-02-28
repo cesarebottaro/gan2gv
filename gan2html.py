@@ -28,6 +28,9 @@ def datetime64_to_datetime(date,string):
     else:
        return new_date
 
+def create_column(tag, data, style):
+    return "<"+tag+" style=\""+style+"\">"+data+"</"+tag+">"
+
 ###### END FUNCTIONS ######
 
 if len(sys.argv) < 2:
@@ -84,43 +87,38 @@ for key in nodes_to_visit:
     find_LS(key,nodes_to_visit[key],1)
 
 # start creating the graph
-print ("digraph "+filename+" {")
-print ("  rankdir=LR;")
-print ("  graph [nodesep=.7, rankdir=LR, splines=ortho];")
-print ("  node [shape=record, width=1.5, height=.1];")
-print ("  legenda [label = \"{ES|D|EF} | {Task} | {LS|S|LF}\"]")
+
+print ("<html>", "<head>", "<style>", sep="\n")
+print ("table, td, th {border: 1px solid black; padding: 3px; border-collapse: collapse;}", end="\n")
+print ("</style>", "</head>", "<body>", sep="\n")
+
+print ("<h1>", filename, "</h1>", end="\n")
+print ("<table>", end="\n")
+print ("<tr><th>", "Name", "</th><th>D</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>S</th></tr>", end="\n")
+
 for node in dom.getElementsByTagName('task'):
     if node.getElementsByTagName('task').length==0:
         task_id=int(node.getAttribute('id'))
-        #slack=(datetime64_to_datetime(data[task_id][1],0)-datetime64_to_datetime(node.getAttribute('start'),0)).days
         slack=np.busday_count(np.datetime64(node.getAttribute('start'),'D'),data[task_id][1],weekmask=workdays,holidays=holidays_list)
-
-        print ("  node_", task_id, " [ ",sep="", end="")# starts node description
-        if slack==0 and data[task_id][0]>0:
-            print ("fillcolor=yellow1 style=filled ",sep="",end="")
-        if data[task_id][0]==0:
-            print ("fillcolor=yellowgreen style=filled ",sep="",end="")
-        print ("label = \"{",datetime64_to_datetime(node.getAttribute('start'),1), sep="", end="")
+        
+        print ("<tr><td>", node.getAttribute('name'), "</td>", sep="", end="")
+        print ("<td>", str(data[task_id][0]), "</td>", sep="", end="")
+        print ("<td>", datetime64_to_datetime(node.getAttribute('start'), 1), "</td>", sep="", end="") 
       
         if data[task_id][0]>0:
-            print ("|", data[task_id][0], "|", sep="", end="")
-            print (datetime64_to_datetime(np.busday_offset(np.datetime64(node.getAttribute('start'),'D'),data[task_id][0]-1,roll='forward',weekmask=workdays,holidays=holidays_list),1), sep="", end="")
+            print ("<td>", datetime64_to_datetime(np.busday_offset(np.datetime64(node.getAttribute('start'),'D'),
+            data[task_id][0]-1, roll='forward', weekmask=workdays, holidays=holidays_list), 1), "</td>", sep="", end="")
             
-        print ("}|{", sep="", end="")
-        print (node.getAttribute('name'), "}", sep="", end="")
+            print ("<td>", datetime64_to_datetime(data[task_id][1], 1), "</td>", sep="", end="")
+            print ("<td>", datetime64_to_datetime(np.busday_offset((data[task_id][1]), data[task_id][0]-1,
+            roll='following', weekmask=workdays,holidays=holidays_list), 1), "</td>", sep="", end="")
+            
+            print ("<td>", str(slack), "</td>", sep="", end="")
+        else:
+            for x in range(4):
+                  print ("<td>-</td>", sep="", end="")
 
-        if data[task_id][0]>0:
-            print ("|{",datetime64_to_datetime(data[task_id][1],1),"|", slack,"|",sep="", end="")
-            print(datetime64_to_datetime(np.busday_offset((data[task_id][1]),data[task_id][0]-1,roll='following',weekmask=workdays,holidays=holidays_list),1), "}", sep="", end="")
+        print ("</tr>", sep="", end="\n")
 
-        print ("\"]") #  ends node description
-        
-        if node.getElementsByTagName('depend'):
-            print ("  node_", task_id, " -> {", sep="", end=" ")
-            # cycle to draw edges to successors
-            for i in node.getElementsByTagName('depend'):
-                print("node_",i.getAttribute('id'), sep="", end=" ")       
-            print ("}")
-        
-print ("}")
-
+print ("</table>", "<br/><br/>", sep="\n")
+print ("<img src=\""+filename+".svg\" alt=\"Image not found\">", "</body>", "</html>", sep="\n") 
