@@ -1,0 +1,29 @@
+digraph demo {
+  rankdir=LR;
+  graph [nodesep=.7, rankdir=LR, splines=ortho];
+  node [shape=record, width=1.5, height=.1];
+  legenda [label = "{ES|D|EF} | {Task} | {LS|S|LF}"]
+  node_2 [ fillcolor=yellowgreen style=filled label = "{01/03/23}|{0 Start}"]
+  node_2 -> { node_0 }
+  node_0 [ fillcolor=yellow1 style=filled label = "{01/03/23|3|03/03/23}|{1 Collect requirements}|{01/03/23|0|03/03/23}"]
+  node_0 -> { node_10 }
+  node_10 [ fillcolor=yellow1 style=filled label = "{04/03/23|2|05/03/23}|{2 Analyze processes}|{04/03/23|0|05/03/23}"]
+  node_10 -> { node_13 node_15 }
+  node_13 [ label = "{06/03/23|2|07/03/23}|{3 Analyze data}|{07/03/23|1|08/03/23}"]
+  node_13 -> { node_16 node_17 }
+  node_15 [ fillcolor=yellow1 style=filled label = "{06/03/23|6|11/03/23}|{4 Design processes}|{06/03/23|0|11/03/23}"]
+  node_15 -> { node_17 node_18 }
+  node_16 [ label = "{08/03/23|3|10/03/23}|{5 Design data}|{09/03/23|1|11/03/23}"]
+  node_16 -> { node_18 }
+  node_17 [ label = "{12/03/23|2|13/03/23}|{6 Design screens}|{16/03/23|4|17/03/23}"]
+  node_17 -> { node_19 }
+  node_18 [ fillcolor=yellow1 style=filled label = "{12/03/23|4|15/03/23}|{7 Design reports}|{12/03/23|0|15/03/23}"]
+  node_18 -> { node_19 node_20 }
+  node_19 [ label = "{16/03/23|5|20/03/23}|{8 Program}|{18/03/23|2|22/03/23}"]
+  node_19 -> { node_21 }
+  node_20 [ fillcolor=yellow1 style=filled label = "{16/03/23|7|22/03/23}|{9 Test and document}|{16/03/23|0|22/03/23}"]
+  node_20 -> { node_21 }
+  node_21 [ fillcolor=yellow1 style=filled label = "{23/03/23|2|24/03/23}|{10 Install}|{23/03/23|0|24/03/23}"]
+  node_21 -> { node_22 }
+  node_22 [ fillcolor=yellowgreen style=filled label = "{25/03/23}|{11 Finish}"]
+}
