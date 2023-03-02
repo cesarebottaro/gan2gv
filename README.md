@@ -5,7 +5,7 @@ The goal is to show the related PERT diagram, with all timings
 (ES, EF, LS, LF and slack), and critical path activities in evidence
 as a **scalable vectorial graph**.
 
-![This is an image](/demo.svg)
+![demo](/demo.svg)
 
 Main developer: Stefano Livella
 
