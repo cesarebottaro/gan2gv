@@ -1,6 +1,7 @@
 ﻿# gan2gv project
-Python code to convert a .gan files (created by [Ganttproject](https://www.ganttproject.biz/))
+Python code to convert a .gan file (created by [Ganttproject](https://www.ganttproject.biz/))
 to different formats, mainly to .gv format ([Graphviz](https://graphviz.org/) dot format).
+
 The goal is to show the related PERT diagram, with all timings
 (ES, EF, LS, LF and slack), and critical path activities in evidence
 as a **scalable vectorial graph**.
